@@ -1,0 +1,22 @@
+<!--<div class="product-container">-->
+<div class="product-container">
+  <img src="{{ this.product.Image }}" alt="product-image" />
+  <p>Tên mặt hàng: {{ this.product.name }}</p>
+  <p>Số lượng tồn kho: {{ this.product.inStock }}</p>
+  <p>Đơn giá: {{ this.product.price }}</p>
+  <button
+    class="button"
+    (click)="
+      this.storeService.addToCart({
+        id: this.product.id,
+        name: this.product.name,
+        price: this.product.price,
+        Image: this.product.Image,
+        quantity: 1,
+      })
+    "
+  >
+    Thêm vào giỏ hàng
+  </button>
+</div>
+<!--</div>-->

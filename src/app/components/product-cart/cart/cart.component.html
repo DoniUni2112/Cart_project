@@ -1,0 +1,25 @@
+<div class="cart-container">
+  <div class="product-in-cart">
+    @for (item of this.storeService.cart; track $index) {
+      <img src="{{ item.Image }}" alt="" />
+      <div class="product-details">
+        <p>Tên sản phẩm: {{ item.name }}</p>
+        <p>Giá tiền: {{ item.price }}</p>
+        <p>Số lượng: {{ item.quantity }}</p>
+        <button
+          class="button-all"
+          (click)="storeService.removeFromCart($index)"
+        >
+          Xóa khỏi giỏ hàng
+        </button>
+      </div>
+    }
+  </div>
+  <div class="button-container">
+    -->
+    <p>Tổng tiền phải thanh toán: {{ storeService.totalPrice() }}</p>
+    <button class="button-checkOut" (click)="storeService.checkOut()">
+      Thanh toán
+    </button>
+  </div>
+</div>

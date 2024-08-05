@@ -1,33 +1,12 @@
+<app-navbar></app-navbar>
 <h1>WORD OF GRAPHIC CARD</h1>
-<div>
-  <div class="products-card">
-    @for (item of products; track $index) {
-    <div class="product-container">
-      <img src="{{ item.Image }}" alt="product-image" />
-      <p>Tên mặt hàng: {{ item.name }}</p>
-      <p>Số lượng tồn kho: {{ item.inStock }}</p>
-      <p>Đơn giá: {{ item.price }}</p>
-      <button class="button-all" [disabled]="item.inStock == 0 ? true : false" (click)="addToCart($index)">Thêm vào giỏ hàng</button>
-    </div>
+<div class="main-focus">
+  <div class="product-card">
+    @for (item of this.storeService.products; track $index) {
+      <app-product-card [product]="item"></app-product-card>
     }
-  </div>
-
-
-<h1>Giỏ hàng</h1>
-  <div class="cart-container">
-    @for (product of cart; track $index) {
-    <div class="product-in-cart">
-      <img src="{{product.Image}}" alt="">
-      <p>Tên sản phẩm: {{ product.name }}</p>
-      <p>Giá tiền: {{ product.price }}</p>
-      <p>Số lượng: {{ product.quantity }}</p>
-      <button class="button-all" (click)="removeFromCart($index)">Xóa khỏi giỏ hàng</button>
-    </div>
-    }
-    
-  </div>
-  <div class="button-container">
-    <p>Tổng tiền phải thanh toán: {{ totalPrice() }}</p>
-    <button class="button-checkOut" (click)="checkOut()">Thanh toán</button>
   </div>
 </div>
+
+<h1>Giỏ hàng</h1>
+<app-cart></app-cart>
